@@ -1,0 +1,21 @@
+{
+  "name": "repo-template",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A template for creating new repositories in the @orbitdb organization",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardLitt/repo-template.git"
+  },
+  "keywords": ["orbitdb", "orbit", "template", "docs"],
+  "author": "Richard Littauer <richard.littauer@gmail.com> (https://burntfen.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RichardLitt/repo-template/issues"
+  },
+  "homepage": "https://github.com/RichardLitt/repo-template#readme"
+}
