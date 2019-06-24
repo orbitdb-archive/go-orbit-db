@@ -1,8 +1,6 @@
 # go-orbitdb
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/orbitdb/Lobby)
-[![npm version](https://badge.fury.io/js/<Replace Title>.svg)](https://www.npmjs.com/package/<Replace Title>)
-[![node](https://img.shields.io/node/v/<Replace Title>.svg)](https://www.npmjs.com/package/<Replace Title>)
 
 > Go implementation of OrbitDB.
 
