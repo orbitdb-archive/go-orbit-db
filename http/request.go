@@ -1,4 +1,4 @@
-package api
+package http
 
 import (
     "encoding/json"
@@ -7,6 +7,7 @@ import (
     "time"
     "strings"
     "bytes"
+    "net/url"
 )
 
 func BuildURL(parts ...string) string {
@@ -43,13 +44,32 @@ func Get(url string) string {
     return ""
 }
 
-func Post(url string, params string) string {
-    rawIn := json.RawMessage(params)
-    jsonValue, err := rawIn.MarshalJSON()
+func isJSON(str string) bool {
+    var js json.RawMessage
+    return json.Unmarshal([]byte(str), &js) == nil
+}
 
-    if err != nil {
-        panic(err)
+func Post(uri string, data string) string {
+    returned := ""
+    var postData = []byte("")
+    var postType = "text/plain"
+
+    if isJSON(data) {
+        rawIn := json.RawMessage(data)
+        jsonData, err := rawIn.MarshalJSON()
+        postData = jsonData
+        postType = "application/json"
+
+        if err != nil {
+            panic(err)
+        }
+    } else {
+        postData = []byte(url.QueryEscape(data))
     }
+
+    request, err := http.NewRequest(http.MethodPost, uri, bytes.NewReader(postData))
+
+    request.Header.Set("Content-Type", postType)
 
     timeout := time.Duration(5 * time.Second)
 
@@ -57,14 +77,15 @@ func Post(url string, params string) string {
         Timeout: timeout,
     }
 
-    response, err := client.Post(url, "application/json", bytes.NewBuffer(jsonValue))
+    response, err := client.Do(request)
 
     if err != nil {
         panic(err)
     } else {
-        data, _ := ioutil.ReadAll(response.Body)
-        return string(data)
+        body, _ := ioutil.ReadAll(response.Body)
+
+        returned = string(body)
     }
 
-    return ""
+    return returned
 }

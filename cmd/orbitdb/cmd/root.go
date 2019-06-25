@@ -12,7 +12,7 @@ import (
 
 var cfgFile string
 
-var apiHost = "https://localhost:3000"
+var httpHost = "https://localhost:3000"
 
 
 // rootCmd represents the base command when called without any subcommands
@@ -33,7 +33,7 @@ func init() {
   cobra.OnInitialize(initConfig)
 
   rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.orbitdb.yaml)")
-  rootCmd.PersistentFlags().StringVar(&apiHost, "api-host", apiHost, "API host address.")
+  rootCmd.PersistentFlags().StringVar(&httpHost, "http-host", httpHost, "HTTP API host address.")
 
   rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

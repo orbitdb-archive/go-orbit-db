@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/orbitdb/go-orbit-db/api"
+	"github.com/orbitdb/go-orbit-db/http"
 )
 
 var listCmd = &cobra.Command{
@@ -12,7 +12,7 @@ var listCmd = &cobra.Command{
 	Short: "Lists all registered databases.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(api.Get(api.BuildURL(apiHost, "/dbs")))
+		fmt.Println(http.Get(http.BuildURL(httpHost, "/dbs")))
 	},
 }
 

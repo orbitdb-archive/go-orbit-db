@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/orbitdb/go-orbit-db/api"
+	"github.com/orbitdb/go-orbit-db/http"
 	"fmt"
 )
 
@@ -11,7 +11,7 @@ var identifyCmd = &cobra.Command{
 	Short: "OrbitDB's identity settings.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(api.Get(api.BuildURL(apiHost, "/identity")))
+		fmt.Println(http.Get(http.BuildURL(httpHost, "/identity")))
 	},
 }
 

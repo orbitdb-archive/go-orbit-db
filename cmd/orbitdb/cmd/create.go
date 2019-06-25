@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"github.com/spf13/cobra"
-	"github.com/orbitdb/go-orbit-db/api"
+	"github.com/orbitdb/go-orbit-db/http"
 )
 
 var createCmd = &cobra.Command{
@@ -21,10 +21,10 @@ var createCmd = &cobra.Command{
 		params["create"] = "true"
 		params["type"] = args[1]
 
-		paramsString := api.MapToJSONString(params)
+		paramsString := http.MapToJSONString(params)
 
-		fmt.Println(api.BuildURL(apiHost, "/db/", args[0]))
-		fmt.Println(api.Post(api.BuildURL(apiHost, "/db/", args[0]), paramsString))
+		fmt.Println(http.BuildURL(httpHost, "/db/", args[0]))
+		fmt.Println(http.Post(http.BuildURL(httpHost, "/db/", args[0]), paramsString))
 	},
 }
 
