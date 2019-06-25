@@ -6,8 +6,8 @@ import (
 	"fmt"
 )
 
-var identityCmd = &cobra.Command{
-	Use:   "identity",
+var identifyCmd = &cobra.Command{
+	Use:   "identify",
 	Short: "OrbitDB's identity settings.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -16,5 +16,5 @@ var identityCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(identityCmd)
+	rootCmd.AddCommand(identifyCmd)
 }
