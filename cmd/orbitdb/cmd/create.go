@@ -23,7 +23,6 @@ var createCmd = &cobra.Command{
 
 		paramsString := http.MapToJSONString(params)
 
-		fmt.Println(http.BuildURL(httpHost, "/db/", args[0]))
 		fmt.Println(http.Post(http.BuildURL(httpHost, "/db/", args[0]), paramsString))
 	},
 }
