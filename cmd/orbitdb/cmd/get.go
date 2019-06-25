@@ -9,21 +9,15 @@ import (
 
 var getCmd = &cobra.Command{
 	Use:   "get",
-	Short: "Gets a record from the database.",
+	Short: "Gets a record from the database matching id.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		//var data = ""
-
-		if len(args) < 1 {
-			fmt.Println("Usage: orbitdb get name")
+		if len(args) != 2 {
+			fmt.Println("Usage: orbitdb get name id")
 			os.Exit(1)
 		}
 
-		/*if len(args) == 2 {
-			data = args[1]
-		}*/
-
-		fmt.Println(http.Get(http.BuildURL(httpHost, "/db/", args[0], "/get")))
+		fmt.Println(http.Get(http.BuildURL(httpHost, "/db/", args[0], "/", args[1])))
 	},
 }
 
