@@ -8,12 +8,20 @@ import (
 )
 
 var addCmd = &cobra.Command{
-	Use:   "add",
+	Use:   "add <database> <data>",
 	Short: "Adds a record to the feed or eventlog database.",
-	Long: ``,
+	Long: `
+The add command appends a new record to a database of type feed or eventlog. Add
+will not work with any other database type.
+
+When adding a record, <data> must be plain text data,
+
+E.g.
+
+orbitdb add feed "OrbitDB"`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 2 {
-			fmt.Println("Usage: orbitdb add name data")
+			fmt.Println("Usage: orbitdb add <database> <data>")
 			os.Exit(1)
 		}
 
