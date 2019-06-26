@@ -20,6 +20,12 @@ go get github.com/orbitdb/go-orbit-db
 orbitdb
 ```
 
+## Maintainers
+
+Hayden Young ([@haydenyoung](https://github.com/haydenyoung)) is the maintainer and lead author of the OrbitDB Go implementation. However, this work is built upon the work and input of many other people:
+
+- [@RichardLitt](https://github.com/RichardLitt)
+
 ## Contribute
 
 We would be happy to accept PRs! If you want to work on something, it'd be good to talk beforehand to make sure nobody else is working on it. You can reach us [on Gitter](https://gitter.im/orbitdb/Lobby), or in the [issues section](https://github.com/orbitdb/go-orbit-db/issues).
