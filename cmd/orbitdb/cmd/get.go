@@ -17,7 +17,7 @@ var getCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		fmt.Println(http.Get(http.BuildURL(httpHost, "/db/", args[0], "/", args[1])))
+		fmt.Println(http.Get(http.BuildURL(httpHost, "/db/", args[0], "/", args[1]), ""))
 	},
 }
 

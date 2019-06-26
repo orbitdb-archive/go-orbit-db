@@ -12,7 +12,7 @@ var listCmd = &cobra.Command{
 	Short: "Lists all registered databases.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(http.Get(http.BuildURL(httpHost, "/dbs")))
+		fmt.Println(http.Get(http.BuildURL(httpHost, "/dbs"), ""))
 	},
 }
 
