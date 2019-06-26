@@ -25,14 +25,20 @@ func MapToJSONString(jsonMap map[string]string) string {
     return string(jsonString)
 }
 
-func Get(url string) string {
+func Get(uri string, data string) string {
     timeout := time.Duration(5 * time.Second)
 
     client := http.Client{
         Timeout: timeout,
     }
 
-    response, err := client.Get(url)
+    request, err := http.NewRequest("GET", uri, bytes.NewBufferString(data))
+
+    if err != nil {
+		panic(err)
+	}
+
+    response, err := client.Do(request)
 
     if err != nil {
         panic(err)
