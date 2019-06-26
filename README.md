@@ -30,4 +30,4 @@ For specific guidelines for contributing to this repository, check out the [Cont
 
 ## License
 
-[MIT](LICENSE) © 2019 Haja Networks Oy
+[MIT](LICENSE) © 2019 OrbitDB community
