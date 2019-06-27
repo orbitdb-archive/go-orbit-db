@@ -9,7 +9,7 @@ import (
 
 var getCmd = &cobra.Command{
 	Use:   "get <database> [<id>]",
-	Short: "Gets a record from the database matching id.",
+	Short: "Gets a record from the database.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
