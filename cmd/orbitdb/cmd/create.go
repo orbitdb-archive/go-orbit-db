@@ -8,7 +8,7 @@ import (
 )
 
 var createCmd = &cobra.Command{
-	Use:   "create",
+	Use:   "create <database> <type>",
 	Short: "Creates a database or opens it if it already exists.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
