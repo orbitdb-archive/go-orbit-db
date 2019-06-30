@@ -24,7 +24,6 @@ var getCmd = &cobra.Command{
 			url = http.BuildURL(url, "/value")
 		} else {
 			url = http.BuildURL(url, "/", args[1])
-			fmt.Println(url)
 		}
 
 		fmt.Println(http.Get(url, ""))
