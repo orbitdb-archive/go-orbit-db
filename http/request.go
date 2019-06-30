@@ -99,3 +99,44 @@ func (r *Request) Post() string {
 
     return returned
 }
+
+func (r *Request) Delete() string {
+    returned := ""
+    var postData = []byte("")
+    var postType = "text/plain"
+
+    if isJSON(r.Data) {
+        rawIn := json.RawMessage(r.Data)
+        jsonData, err := rawIn.MarshalJSON()
+        postData = jsonData
+        postType = "application/json"
+
+        if err != nil {
+            panic(err)
+        }
+    } else {
+        postData = []byte(url.QueryEscape(r.Data))
+    }
+
+    request, err := http.NewRequest(http.MethodDelete, r.Url, bytes.NewReader(postData))
+
+    request.Header.Set("Content-Type", postType)
+
+    timeout := time.Duration(5 * time.Second)
+
+    client := http.Client{
+        Timeout: timeout,
+    }
+
+    response, err := client.Do(request)
+
+    if err != nil {
+        panic(err)
+    } else {
+        body, _ := ioutil.ReadAll(response.Body)
+
+        returned = string(body)
+    }
+
+    return returned
+}
