@@ -24,10 +24,13 @@ orbitdb add feed "OrbitDB"`,
 			fmt.Println("Usage: orbitdb add <database> <data>")
 			os.Exit(1)
 		}
+ 
+		var r http.Request
 
-		data := args[1]
+		r.SetURL(httpHost, "/db/", args[0], "/add")
+		r.Data = args[1]
 
-		fmt.Println(http.Post(http.BuildURL(httpHost, "/db/", args[0], "/add"), data))
+		fmt.Println(r.Post())
 	},
 }
 

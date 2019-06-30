@@ -21,9 +21,12 @@ var createCmd = &cobra.Command{
 		params["create"] = "true"
 		params["type"] = args[1]
 
-		paramsString := http.MapToJSONString(params)
+		var r http.Request
 
-		fmt.Println(http.Post(http.BuildURL(httpHost, "/db/", args[0]), paramsString))
+		r.SetURL(httpHost, "/db/", args[0])
+		r.SetJSONData(params)
+
+		fmt.Println(r.Post())
 	},
 }
 

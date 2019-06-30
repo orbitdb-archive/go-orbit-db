@@ -20,13 +20,15 @@ counter is incremented by 1.`,
 			os.Exit(1)
 		}
 
-		url := http.BuildURL(httpHost, "/db/", args[0], "/inc")
+		var r http.Request
+
+		r.SetURL(httpHost, "/db/", args[0], "/inc")
 
 		if len(args) == 2 {
-			url = http.BuildURL(url, "/", args[1])
+			r.SetURL(r.Url, "/", args[1])
 		}
 
-		fmt.Println(http.Post(url, ""))
+		fmt.Println(r.Post())
 	},
 }
 

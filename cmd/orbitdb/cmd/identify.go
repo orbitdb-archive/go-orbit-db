@@ -11,7 +11,11 @@ var identifyCmd = &cobra.Command{
 	Short: "OrbitDB's identity settings.",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(http.Get(http.BuildURL(httpHost, "/identity"), ""))
+		var r http.Request
+
+		r.SetURL(httpHost, "/identity")
+
+		fmt.Println(r.Get())
 	},
 }
 

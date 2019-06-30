@@ -17,16 +17,18 @@ var getCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		url := http.BuildURL(httpHost, "/db/", args[0])
+		var r http.Request
+
+		r.SetURL(httpHost, "/db/", args[0])
 
 		// if no id is supplied, assume counter is being retrieved.
 		if len(args) == 1 {
-			url = http.BuildURL(url, "/value")
+			r.SetURL(r.Url, "/value")
 		} else {
-			url = http.BuildURL(url, "/", args[1])
+			r.SetURL(r.Url, "/", args[1])
 		}
 
-		fmt.Println(http.Get(url, ""))
+		fmt.Println(r.Get())
 	},
 }
 

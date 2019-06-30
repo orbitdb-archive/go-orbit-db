@@ -23,7 +23,11 @@ to quickly create a Cobra application.`,
 			os.Exit(1)
 		}
 
-		fmt.Println(http.Get(http.BuildURL(httpHost, "/db/", args[0], "/index"), ""))
+		var r http.Request
+
+		r.SetURL(httpHost, "/db/", args[0], "/index")
+
+		fmt.Println(r.Get())
 	},
 }
 

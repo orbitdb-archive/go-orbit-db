@@ -17,9 +17,12 @@ var putCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		data := args[1]
+		var r http.Request
 
-		fmt.Println(http.Post(http.BuildURL(httpHost, "/db/", args[0]), data))
+		r.SetURL(httpHost, "/db/", args[0])
+		r.Data = args[1]
+
+		fmt.Println(r.Post())
 	},
 }
 

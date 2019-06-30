@@ -10,29 +10,33 @@ import (
     "net/url"
 )
 
-func BuildURL(parts ...string) string {
-	var urlBuilder strings.Builder
+type Request struct {
+    Url, Data string
+}
+
+func (r *Request) SetURL(parts ...string) {
+	var url strings.Builder
 
     for i := 0; i < len(parts); i++ {
-        urlBuilder.WriteString(parts[i])
+        url.WriteString(parts[i])
     }
 
-	return urlBuilder.String()
+	r.Url = url.String()
 }
 
-func MapToJSONString(jsonMap map[string]string) string {
+func (r *Request) SetJSONData(jsonMap map[string]string) {
     jsonString, _ := json.Marshal(jsonMap)
-    return string(jsonString)
+    r.Data = string(jsonString)
 }
 
-func Get(uri string, data string) string {
+func (r *Request) Get() string {
     timeout := time.Duration(5 * time.Second)
 
     client := http.Client{
         Timeout: timeout,
     }
 
-    request, err := http.NewRequest("GET", uri, bytes.NewBufferString(data))
+    request, err := http.NewRequest("GET", r.Url, bytes.NewBufferString(r.Data))
 
     if err != nil {
 		panic(err)
@@ -55,13 +59,13 @@ func isJSON(str string) bool {
     return json.Unmarshal([]byte(str), &js) == nil
 }
 
-func Post(uri string, data string) string {
+func (r *Request) Post() string {
     returned := ""
     var postData = []byte("")
     var postType = "text/plain"
 
-    if isJSON(data) {
-        rawIn := json.RawMessage(data)
+    if isJSON(r.Data) {
+        rawIn := json.RawMessage(r.Data)
         jsonData, err := rawIn.MarshalJSON()
         postData = jsonData
         postType = "application/json"
@@ -70,10 +74,10 @@ func Post(uri string, data string) string {
             panic(err)
         }
     } else {
-        postData = []byte(url.QueryEscape(data))
+        postData = []byte(url.QueryEscape(r.Data))
     }
 
-    request, err := http.NewRequest(http.MethodPost, uri, bytes.NewReader(postData))
+    request, err := http.NewRequest(http.MethodPost, r.Url, bytes.NewReader(postData))
 
     request.Header.Set("Content-Type", postType)
 
