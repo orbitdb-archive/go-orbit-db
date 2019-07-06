@@ -10,7 +10,9 @@ import (
 var getCmd = &cobra.Command{
 	Use:   "get <database> [<id>]",
 	Short: "Gets a record from the database.",
-	Long: ``,
+	Long: `
+The get command gets a record identified by <id> from the database named
+<database>.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			fmt.Println("Usage: orbitdb get <database> [<id>]")
