@@ -10,7 +10,8 @@ import (
 var infoCmd = &cobra.Command{
 	Use:   "info <database>",
 	Short: "Lists details about the database.",
-	Long: ``,
+	Long: `
+The info command lists the details of the database named <database>.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			fmt.Println("Usage: orbitdb info <database>")
