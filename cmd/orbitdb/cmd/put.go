@@ -8,12 +8,20 @@ import (
 )
 
 var putCmd = &cobra.Command{
-	Use:   "put",
+	Use:   "put <database> <data>",
 	Short: "Adds a record to a document database.",
-	Long: ``,
+	Long: `
+The put command adds a record with <data> to a document database named
+<database>.
+
+If the database has a unique identifier and <data> contains an existing id,
+the matching record will be updated.
+
+<data> must be JSON-formatted.
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 2 {
-			fmt.Println("Usage: orbitdb put name data")
+			fmt.Println("Usage: orbitdb put <database> <data>")
 			os.Exit(1)
 		}
 
