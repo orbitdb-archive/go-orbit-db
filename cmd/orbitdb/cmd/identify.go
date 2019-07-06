@@ -9,7 +9,8 @@ import (
 var identifyCmd = &cobra.Command{
 	Use:   "identify",
 	Short: "OrbitDB's identity settings.",
-	Long: ``,
+	Long: `
+The identify command shows information about the peer.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var r http.Request
 
