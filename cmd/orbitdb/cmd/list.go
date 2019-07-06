@@ -10,7 +10,9 @@ import (
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "Lists all registered databases.",
-	Long: ``,
+	Long: `
+The list command lists all registered databases. A registered database is one
+that has been created and/or loaded using the create command.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var r http.Request
 
