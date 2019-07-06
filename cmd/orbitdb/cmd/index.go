@@ -9,14 +9,13 @@ import (
 
 // indexCmd represents the index command
 var indexCmd = &cobra.Command{
-	Use:   "index",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Use:   "index <database>",
+	Short: "Gets information about the data stored in <database>.",
+	Long: `
+The index command lists all informatoin about data stored in the database
+named <database>.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+The information returned will differ depending on the data type.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			fmt.Println("Usage: orbitdb index name")
