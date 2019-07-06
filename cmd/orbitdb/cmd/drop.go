@@ -10,7 +10,10 @@ import (
 var dropCmd = &cobra.Command{
 	Use:   "drop <database>",
 	Short: "Drop a database.",
-	Long: ``,
+	Long: `
+The drop command drops <database> locally.
+
+This does not affect replicated databases.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			fmt.Println("Usage: orbitdb drop <database>")
