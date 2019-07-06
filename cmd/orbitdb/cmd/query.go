@@ -10,7 +10,16 @@ import (
 var queryCmd = &cobra.Command{
 	Use:   "query <database> [params]",
 	Short: "Executes a query against the database.",
-	Long: ``,
+	Long: `
+The query command queries the database <database>.
+
+[params] is a list of JSON-formatted querying parameters:
+
+propname
+cond
+values
+
+If no [params] are specified, all records are returned.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			fmt.Println("Usage: orbitdb query <database> [params]")
