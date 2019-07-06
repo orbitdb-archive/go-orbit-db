@@ -10,10 +10,13 @@ import (
 var createCmd = &cobra.Command{
 	Use:   "create <database> <type>",
 	Short: "Creates a database or opens it if it already exists.",
-	Long: ``,
+	Long: `
+The create command creates a new database with name <database> of type <type>.
+
+If the database already exists, it is opened.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 2 {
-			fmt.Println("Usage: orbitdb create name type")
+			fmt.Println("Usage: orbitdb create <database> <type>")
 			os.Exit(1)
 		}
 
