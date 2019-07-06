@@ -10,7 +10,10 @@ import (
 var delCmd = &cobra.Command{
 	Use:   "del <database> <id>",
 	Short: "Deletes a record from the database.",
-	Long: ``,
+	Long: `
+The del command deletes a record identified by <id> from <database>.
+
+Only applies to docstore, keyvalue and feed.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 2 {
 			fmt.Println("Usage: orbitdb del <database> <id>")
